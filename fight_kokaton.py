@@ -8,6 +8,7 @@ import pygame as pg
 WIDTH = 1100  # ゲームウィンドウの幅
 HEIGHT = 650  # ゲームウィンドウの高さ
 NUM_OF_BOMBS = 5    # 爆弾の数
+TIME = 10 # 爆発までの時間
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -154,6 +155,20 @@ class Score:
     def update(self,screen: pg.Surface):
         self.img = self.fonto.render(f"Score:{self.score}", 0, (0,0,255))
         screen.blit(self.img,self.rct)
+
+class Explosion:
+    """
+    爆弾の爆発エフェクト
+    """
+    def __init__(self, time:int , bomb:"Bomb"):
+        self.img = pg.image.load("fig/explosion.gif")
+        self.rct = self.img.get_rect()
+        self.rct.center = 0
+        self.life = time
+
+    def update(self):
+        pass
+    
 
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
