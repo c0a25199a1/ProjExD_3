@@ -145,6 +145,11 @@ class Score:
     スコアに関するクラス
     """
     def __init__(self):
+        """
+        初期状態
+        score :ゲームスコア
+        img,rct :文字列を表示するサーフェイス、レクト
+        """
         self.score = 0
         self.fonto = pg.font.Font(None,50)
         self.img = self.fonto.render(f"Score:{self.score}", 0, (0,0,255))
@@ -152,6 +157,10 @@ class Score:
         self.rct.center = 100, HEIGHT-50
 
     def update(self,screen: pg.Surface):
+        """
+        画面更新の関数
+        更新するたびにスコアが反映される
+        """
         self.img = self.fonto.render(f"Score:{self.score}", 0, (0,0,255))
         screen.blit(self.img,self.rct)
 
@@ -211,6 +220,8 @@ def main():
         beams =[beam for beam in beams if beam is not None] # ビームの更新
 
         key_lst = pg.key.get_pressed()
+
+        # 画面更新
         bird.update(key_lst, screen)
         for bomb in bombs:
             bomb.update(screen)
@@ -218,6 +229,7 @@ def main():
             beam.update(screen)
         score.update(screen)
         pg.display.update()
+
         tmr += 1
         clock.tick(50)
 
