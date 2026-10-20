@@ -88,7 +88,7 @@ class Beam:
     """
     こうかとんが放つビームに関するクラス
     """
-    def イニシャライザ(self, bird:"Bird"):
+    def __init__(self, bird:"Bird"):
         """
         ビーム画像Surfaceを生成する
         引数 bird：ビームを放つこうかとん（Birdインスタンス）
@@ -167,7 +167,8 @@ def main():
 
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
-        beam.update(screen)   
+        if beam is not None:
+             beam.update(screen)   
         bomb.update(screen)
         pg.display.update()
         tmr += 1
