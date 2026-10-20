@@ -140,8 +140,6 @@ class Bomb:
         self.rct.move_ip(self.vx, self.vy)
         screen.blit(self.img, self.rct)
 
-<<<<<<< HEAD
-=======
 class Score:
     """
     スコアに関するクラス
@@ -157,7 +155,6 @@ class Score:
         self.img = self.fonto.render(f"Score:{self.score}", 0, (0,0,255))
         screen.blit(self.img,self.rct)
 
->>>>>>> score
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
@@ -200,6 +197,7 @@ def main():
                 if beam.rct.colliderect(bomb.rct):     # ビームと爆弾接触判定
                     beam = None
                     bombs [i] = None
+                    score.score += 1
                     bird.change_img(9,screen)
 
 
@@ -211,10 +209,7 @@ def main():
             bomb.update(screen)
         if beam is not None:
             beam.update(screen)
-<<<<<<< HEAD
-=======
         score.update(screen)
->>>>>>> score
         pg.display.update()
         tmr += 1
         clock.tick(50)
